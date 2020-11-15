@@ -2,6 +2,8 @@ import 'package:flutter_architecture/app/modules/detail/detail_binding.dart';
 import 'package:flutter_architecture/app/modules/detail/detail_page.dart';
 import 'package:flutter_architecture/app/modules/home/home_binding.dart';
 import 'package:flutter_architecture/app/modules/home/home_page.dart';
+import 'package:flutter_architecture/app/modules/login/login_binding.dart';
+import 'package:flutter_architecture/app/modules/login/login_page.dart';
 import 'package:flutter_architecture/app/modules/splash/splash_binding.dart';
 import 'package:flutter_architecture/app/modules/splash/splash_page.dart';
 import 'package:flutter_architecture/app/routes/app_routes.dart';
@@ -23,6 +25,11 @@ class AppPages {
       name: AppRoutes.DETAIL,
       page: () => DetailPage(),
       binding: DetailBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.LOGIN,
+      page: () => LoginPage(),
+      binding: LoginBinding(),
     ),
   ];
 }
