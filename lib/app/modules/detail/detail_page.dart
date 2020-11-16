@@ -8,7 +8,11 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-      builder: (_) => Scaffold(),
+      builder: (_) => Scaffold(
+        body: Center(
+          child: Text("DETAIL"),
+        ),
+      ),
     );
   }
 }
