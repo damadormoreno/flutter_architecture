@@ -11,8 +11,11 @@ class MovieItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.network(
-          "${Constants.THE_MOVIEDB_IMAGE_PATH}${movie.posterPath}"),
+      leading: Hero(
+        tag: 'detail${movie.id}',
+        child: Image.network(
+            "${Constants.THE_MOVIEDB_IMAGE_PATH}${movie.posterPath}"),
+      ),
       title: Text(movie.title),
       subtitle: Text(movie.overview),
       onTap: () => Get.toNamed(AppRoutes.DETAIL, arguments: movie),
