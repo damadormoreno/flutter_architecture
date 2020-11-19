@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
 import 'package:flutter_architecture/app/data/model/request_token.dart';
+import 'package:flutter_architecture/app/utils/failure.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
@@ -16,16 +18,16 @@ class LocalAuth {
     await _storage.delete(key: KEY);
   }
 
-  Future<RequestToken> getSession() async {
+  Future<Either<Failure, RequestToken>> getSession() async {
     final data = await _storage.read(key: KEY);
     if (data != null) {
       final RequestToken requestToken = RequestToken.fromJson(jsonDecode(data));
       if (DateTime.now()
           .isBefore(requestToken.expiresAt.add(Duration(hours: 1)))) {
-        return requestToken;
+        return Right(requestToken);
       }
-      return null;
+      return Left(Failure(1001, "Expired token"));
     }
-    return null;
+    return Left(Failure(1002, "No data"));
   }
 }

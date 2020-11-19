@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (_) => Scaffold(
         appBar: AppBar(
+          title: Text("TOP RATED"),
           actions: [
             IconButton(
               icon: Icon(Icons.exit_to_app),

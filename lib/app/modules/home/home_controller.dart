@@ -1,7 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_architecture/app/data/model/movie.dart';
 import 'package:flutter_architecture/app/data/repository/local/local_auth_repository.dart';
 import 'package:flutter_architecture/app/data/repository/remote/movies_repository.dart';
 import 'package:flutter_architecture/app/routes/app_routes.dart';
+import 'package:flutter_architecture/app/utils/failure.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -25,12 +27,13 @@ class HomeController extends GetxController {
   }
 
   Future<void> _load() async {
-    try {
-      _movies = await _moviesRepository.getTopMovies();
-      print('movies => ${_movies.length}');
-      update();
-    } catch (e) {
-      print(e);
-    }
+    Either<Failure, List<Movie>> _either =
+        await _moviesRepository.getTopMovies();
+    _either.fold(
+      (failure) => null,
+      (movies) => _movies = movies,
+    );
+    print('movies => ${_movies.length}');
+    update();
   }
 }
