@@ -46,14 +46,16 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height: 8,
                 ),
-                FlatButton(
-                  minWidth: 150,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: Colors.blue[900]),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      side: BorderSide(color: Colors.blue[900]),
+                    ),
+                    backgroundColor: Colors.black,
+                    minimumSize: Size(150, 0),
                   ),
                   onPressed: _.submit,
-                  color: Colors.black,
                   child: Text(
                     "Send",
                     style: TextStyle(
@@ -62,16 +64,18 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8),
-                FlatButton(
-                  minWidth: 150,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: Colors.blue[900]),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      side: BorderSide(color: Colors.blue[900]),
+                    ),
+                    backgroundColor: Colors.black,
+                    minimumSize: Size(150, 0),
                   ),
                   onPressed: _.guestSession,
-                  color: Colors.black,
                   child: Text(
-                    "Guest Session",
+                    "Guest",
                     style: TextStyle(
                       color: Colors.white,
                     ),
