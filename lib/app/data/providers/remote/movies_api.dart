@@ -10,21 +10,21 @@ class MoviesAPI {
 
   Future<Either<Failure, List<Movie>>> getTopMovies() async {
     try {
-      final Response response = await _dio.get(
-            '/movie/top_rated',
-            queryParameters: {
-              "api_key": Constants.THE_MOVIEDB_API_KEY,
-              "language": "es",
-            },
-          );
+      final response = await _dio.get(
+        '/movie/top_rated',
+        queryParameters: {
+          "api_key": Constants.THE_MOVIEDB_API_KEY,
+          "language": "es",
+        },
+      );
 
       if (response.statusCode == 200) {
-            return Right((response.data['results'] as List)
-                .map((e) => Movie.fromJson(e))
-                .toList());
-          } else {
-            return Left(Failure(response.statusCode, response.statusMessage));
-          }
+        return Right((response.data['results'] as List)
+            .map((e) => Movie.fromJson(e))
+            .toList());
+      } else {
+        return Left(Failure(response.statusCode, response.statusMessage));
+      }
     } catch (e) {
       if (e is DioError) {
         return Left(Failure(e.response.statusCode, e.response.statusMessage));
